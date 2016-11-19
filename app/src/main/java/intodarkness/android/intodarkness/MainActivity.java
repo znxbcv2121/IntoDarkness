@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private HapticMaterial mHapticMaterial;
     private HapticSprite mHapticSprite;
 
-    int rows = 3;
-    int columns = 3;
+    int rows = 4;
+    int columns = 4;
     Maze maze = new Maze(rows, columns);
 
     @Override
@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initHaptics();
-        maze.generateMaze(1,1);
+
+        //int randomPosX =
+        maze.generateMaze(3,3);
         maze.display();
     }
 

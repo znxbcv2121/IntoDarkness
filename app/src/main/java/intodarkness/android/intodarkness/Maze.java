@@ -1,5 +1,6 @@
 package intodarkness.android.intodarkness;
 
+import java.util.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
@@ -42,11 +43,16 @@ public class Maze {
         mazeArray[x][y] = PATH;
 
         //Start depth-first search
-        int[] DIRECTIONS = new int[] {NORTH, EAST, WEST, SOUTH};
-        Collections.shuffle(Arrays.asList(DIRECTIONS));
-        for(int dir : DIRECTIONS){
-            if(checkNeighbor(dir, x, y)){
-                switch (dir){
+        List DIRECTIONS = new ArrayList();
+        DIRECTIONS.add(NORTH);
+        DIRECTIONS.add(SOUTH);
+        DIRECTIONS.add(WEST);
+        DIRECTIONS.add(EAST);
+        Collections.shuffle(DIRECTIONS);
+
+        for(Object dir : DIRECTIONS){
+            if(checkNeighbor((int)dir, x, y)){
+                switch ((int)dir){
                     case NORTH:
                         generateMaze(x, y - 2);
                         break;
