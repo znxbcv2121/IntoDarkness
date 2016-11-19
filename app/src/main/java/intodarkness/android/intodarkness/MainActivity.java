@@ -10,6 +10,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 
+
 import co.tanvas.haptics.service.app.*;
 import co.tanvas.haptics.service.adapter.*;
 import co.tanvas.haptics.service.model.*;
@@ -20,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     private HapticTexture mHapticTexture;
     private HapticMaterial mHapticMaterial;
     private HapticSprite mHapticSprite;
+
+    int rows = 3;
+    int columns = 3;
+    Maze maze = new Maze(rows, columns);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

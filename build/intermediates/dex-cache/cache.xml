@@ -26,7 +26,7 @@
         jar="C:\Users\znxbc_000\Documents\GitHub\IntoDarkness\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="25.0.0"
-        sha1="87a313d66b18408141eee2b65ccf3d1c3bc18deb">
+        sha1="eabf08e9e52a7b65a451af152d25bbcdaf2525ee">
         <dex dex="C:\Users\znxbc_000\Documents\GitHub\IntoDarkness\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_30123473fdec8ddcac57d85db4655cd80031ca50\classes.dex" />
     </item>
     <item
@@ -89,7 +89,7 @@
         jar="C:\Users\znxbc_000\Documents\GitHub\IntoDarkness\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="25.0.0"
-        sha1="69f4b52bbadd08ce94e33e3331ef0a5cb90cc3ac">
+        sha1="7a1e4f1ec3b3a163b520e59a74890a9dbadf377e">
         <dex dex="C:\Users\znxbc_000\Documents\GitHub\IntoDarkness\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_8575f6ddfb082f606b65accf31cfd555200964ae\classes.dex" />
     </item>
     <item
