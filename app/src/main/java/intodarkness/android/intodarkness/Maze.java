@@ -18,14 +18,12 @@ public class Maze {
     static final int SOUTH = 3;
     int[] DIRECTIONS = new int[] {NORTH, EAST, WEST, SOUTH};
 
-    int posX = 1;
-    int posY = 1;
 
     //Basic constructor for the maze; creates a maze full of walls
     public Maze(int numRows, int numCols){
         this.rows = numRows;
         this.columns = numCols;
-        this.mazeArray = new int[rows][columns];
+        this.mazeArray = new int[(rows*2) + 1][(columns*2)+1];
         initializeMaze();
     }
 
@@ -46,28 +44,41 @@ public class Maze {
         //Start depth-first search
         Collections.shuffle(Arrays.asList(DIRECTIONS));
         for(int dir : DIRECTIONS){
-            if(checkNeighbor(dir)){
-                generateMaze(posX, posY);
+            if(checkNeighbor(dir, x, y)){
+                switch (dir){
+                    case NORTH:
+                        generateMaze(x, y - 2);
+                        break;
+                    case EAST:
+                        generateMaze(x + 2, y);
+                        break;
+                    case WEST:
+                        generateMaze(x - 2, y);
+                        break;
+                    case SOUTH:
+                        generateMaze(x, y + 2);
+                        break;
+                }
             }
         }
     }
 
     //Checks whether the neighbor has been visited or not
     //i.e. if visited, it would return false.
-    public boolean checkNeighbor(int direction){
+    public boolean checkNeighbor(int direction, int x, int y){
         switch(direction){
             case NORTH:
                 //if the north neighbor is out of bounds return false
-                if(posY - 2 < 0)
+                if(y - 2 < 0)
                     return false;
 
                 //if the north neighbor is unvisited, shift the y coordinate,
                 //mark the neighbor and the wall as 0.
                 // and return true
-                if (mazeArray[posX][posY - 2] == 1){
-                    posY -= 2;
-                    mazeArray[posX][posY - 1] = 0;
-                    mazeArray[posX][posY - 2] = 0;
+                if (mazeArray[x][y - 2] == 1){
+                    y -= 2;
+                    mazeArray[x][y - 1] = 0;
+                    mazeArray[x][y - 2] = 0;
                     return true;
                 }
 
@@ -76,15 +87,15 @@ public class Maze {
 
             case EAST:
                 //if the east neighbor is out of bounds return false
-                if(posX + 2 > (rows * 2))
+                if(x + 2 > (rows * 2))
                     return false;
 
                 //if the north neighbor is unvisited, shift the y coordinate,
                 //mark the neighbor and the wall as 0.
-                if (mazeArray[posX + 2][posY] == 1){
-                    posX += 2;
-                    mazeArray[posX + 2][posY] = 0;
-                    mazeArray[posX + 2][posY] = 0;
+                if (mazeArray[x + 2][y] == 1){
+                    x += 2;
+                    mazeArray[x + 2][y] = 0;
+                    mazeArray[x + 2][y] = 0;
                     return true;
                 }
 
@@ -93,15 +104,15 @@ public class Maze {
 
             case WEST:
                 //if the west neighbor is out of bounds return false
-                if(posX - 2 < 0)
+                if(x - 2 < 0)
                     return false;
 
                 //if the north neighbor is unvisited, shift the y coordinate,
                 //mark the neighbor and the wall as 0.
-                if (mazeArray[posX - 2][posY] == 1){
-                    posX -= 2;
-                    mazeArray[posX - 2][posY] = 0;
-                    mazeArray[posX - 2][posY] = 0;
+                if (mazeArray[x - 2][y] == 1){
+                    x -= 2;
+                    mazeArray[x - 1][y] = 0;
+                    mazeArray[x - 2][y] = 0;
                     return true;
                 }
 
@@ -110,15 +121,15 @@ public class Maze {
 
             case SOUTH:
                 //if the east neighbor is out of bounds return false
-                if(posX + 2 > (rows * 2))
+                if(y + 2 > (columns * 2))
                     return false;
 
                 //if the north neighbor is unvisited, shift the y coordinate,
                 //mark the neighbor and the wall as 0.
-                if (mazeArray[posX + 2][posY] == 1){
-                    posX += 2;
-                    mazeArray[posX + 2][posY] = 0;
-                    mazeArray[posX + 2][posY] = 0;
+                if (mazeArray[x][y + 2] == 1){
+                    x += 2;
+                    mazeArray[x][y + 1] = 0;
+                    mazeArray[x][y + 2] = 0;
                     return true;
                 }
 

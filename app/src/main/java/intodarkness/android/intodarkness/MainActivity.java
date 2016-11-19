@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initHaptics();
+        maze.generateMaze(1,1);
+        maze.display();
     }
 
     public void initHaptics() {
