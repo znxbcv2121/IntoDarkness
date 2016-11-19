@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
 
 import co.tanvas.haptics.service.app.*;
@@ -66,6 +67,35 @@ public class MainActivity extends AppCompatActivity {
 
             // Add the haptic sprite to the haptic view
             mHapticView.addSprite(mHapticSprite);
+        } catch (Exception e) {
+            Log.e(null, e.toString());
+        }
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        // The activity is gaining focus
+
+        if (hasFocus) {
+            try {
+            // Set the size and position of the haptic sprite to correspond to the view we created
+                View view = findViewById(R.id.view);
+                int[] location = new int[2];
+                view.getLocationOnScreen(location);
+                mHapticSprite.setSize(view.getWidth(), view.getHeight());
+                mHapticSprite.setPosition(location[0], location[1]);
+            } catch (Exception e) {
+                Log.e(null, e.toString());
+            }
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            mHapticView.deactivate();
         } catch (Exception e) {
             Log.e(null, e.toString());
         }
