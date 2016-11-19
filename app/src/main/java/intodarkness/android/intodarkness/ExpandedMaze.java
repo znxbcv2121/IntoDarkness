@@ -1,7 +1,5 @@
 package intodarkness.android.intodarkness;
 
-import Maze;
-
 /**
  * Created by Kaitlyn on 11/19/2016.
  */
