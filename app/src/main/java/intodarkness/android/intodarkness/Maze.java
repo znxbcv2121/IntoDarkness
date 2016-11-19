@@ -137,6 +137,11 @@ public class Maze {
         throw new IllegalArgumentException("Illegal direction passed");
     }
 
+    public int[][] getMazeArray(){
+        return mazeArray;
+    }
+
+
     public void display(){
         for(int i = 0; i < columns * 2 + 1; i++){
             for(int j = 0; j < rows * 2 + 1; j++){
