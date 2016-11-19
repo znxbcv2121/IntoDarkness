@@ -16,7 +16,7 @@ public class Maze {
     static final int EAST = 1;
     static final int WEST = 2;
     static final int SOUTH = 3;
-    int[] DIRECTIONS = new int[] {NORTH, EAST, WEST, SOUTH};
+
 
 
     //Basic constructor for the maze; creates a maze full of walls
@@ -42,6 +42,7 @@ public class Maze {
         mazeArray[x][y] = PATH;
 
         //Start depth-first search
+        int[] DIRECTIONS = new int[] {NORTH, EAST, WEST, SOUTH};
         Collections.shuffle(Arrays.asList(DIRECTIONS));
         for(int dir : DIRECTIONS){
             if(checkNeighbor(dir, x, y)){
@@ -76,7 +77,6 @@ public class Maze {
                 //mark the neighbor and the wall as 0.
                 // and return true
                 if (mazeArray[x][y - 2] == 1){
-                    y -= 2;
                     mazeArray[x][y - 1] = 0;
                     mazeArray[x][y - 2] = 0;
                     return true;
@@ -93,8 +93,7 @@ public class Maze {
                 //if the north neighbor is unvisited, shift the y coordinate,
                 //mark the neighbor and the wall as 0.
                 if (mazeArray[x + 2][y] == 1){
-                    x += 2;
-                    mazeArray[x + 2][y] = 0;
+                    mazeArray[x + 1][y] = 0;
                     mazeArray[x + 2][y] = 0;
                     return true;
                 }
@@ -110,7 +109,6 @@ public class Maze {
                 //if the north neighbor is unvisited, shift the y coordinate,
                 //mark the neighbor and the wall as 0.
                 if (mazeArray[x - 2][y] == 1){
-                    x -= 2;
                     mazeArray[x - 1][y] = 0;
                     mazeArray[x - 2][y] = 0;
                     return true;
@@ -127,7 +125,6 @@ public class Maze {
                 //if the north neighbor is unvisited, shift the y coordinate,
                 //mark the neighbor and the wall as 0.
                 if (mazeArray[x][y + 2] == 1){
-                    x += 2;
                     mazeArray[x][y + 1] = 0;
                     mazeArray[x][y + 2] = 0;
                     return true;
